@@ -27,7 +27,7 @@
     <nav class="p-5 bg-white-shadow md:flex md:item-center md:justify-between">
         <div class="flex justify-between items-center z-[4]">
             <span class="text-2xl">
-                Instadata
+                Project Name
             </span>
             <span class="text-2xl cursor-pointer md:hidden block">
                 <img src="{% static 'menu.svg' %}" alt="Menu" class="w-8" onclick="showMobileMenu(this);">
@@ -35,18 +35,18 @@
         </div>
         <ul id="menulist" class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in-out duration-600">
             <li id="menuitem" class="mx-4 my-6 md:my-0">
-                <a class="text-xl hover:text-cyan-500 duration-500" href="/ui/dashboard">
-                    Dashboard
+                <a class="text-xl hover:text-cyan-500 duration-500" href="#">
+                    Link 1
                 </a>
             </li>
             <li id="menuitem" class="mx-4 my-6 md:my-0">
-                <a class="text-xl hover:text-cyan-500 duration-500" href="/ui/main-log">
-                    Haupt Log
+                <a class="text-xl hover:text-cyan-500 duration-500" href="#">
+                    Link 2
                 </a>
             </li>
             <li id="menuitem" class="mx-4 my-6 md:my-0">
-                <a class="text-xl hover:text-cyan-500 duration-500" href="/ui/stdout-log">
-                    Stdout Log
+                <a class="text-xl hover:text-cyan-500 duration-500" href="#">
+                    Link 3
                 </a>
             </li>
         </ul>
@@ -55,15 +55,6 @@
     <div class="content bg-blue-100 min-h-screen px-3 py-5" style="max-width: 100vw;">
         {% block htmlcontents %}
         {% endblock %}
-    </div>
-
-    <div id="hidden-components" class="hidden">
-        <div id="error_message" class="h-max w-max bg-red-200 p-3 m-2 rounded-3xl">
-            <p id="error_message_text" style="color: rgb(112, 9, 9);" class="font-semibold leading-none">
-                <img src="{% static 'close.png' %}" alt="Fehler:" class="w-5 inline-block">
-                Es ist ein Fehler aufgetreten. Bitte versuche es später noch einmal.
-            </p>
-        </div>
     </div>
 
     <script>
