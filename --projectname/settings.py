@@ -21,9 +21,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-=w0&n9o@)3+ia)j1+u4dk@_)_n!80ag0s$8gt*2uy01!ezgy%_'
+# PRODUCTION:
+# sk = str(uuid.uuid4()) + str(uuid.uuid4())
+# with open("sk.txt", "w", encoding="utf-8") as f:
+#     f.write(sk)
+# SECRET_KEY = sk
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# PRODUCTION:
+# DEBUG = False
 
 ALLOWED_HOSTS = []
 
