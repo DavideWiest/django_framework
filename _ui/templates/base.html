@@ -7,6 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'css/typography.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <!-- <link rel="icon" type="image/png" href="{% static 'assets/Branding_Assets 14 Logo White PNG.png' %}"/> -->
+
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
@@ -21,10 +24,8 @@
                 }
             }
         </script>
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,800&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,500&display=swap" rel="stylesheet"> -->
         
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     </head>
 <body>
     <style>
@@ -39,54 +40,15 @@
         }
     </style>
 
-    <nav class="p-5 bg-white-shadow md:flex md:item-center md:justify-between">
-        <div class="flex justify-between items-center z-[4]">
-            <span class="text-2xl">
-                Project Name
-            </span>
-            <span class="text-2xl cursor-pointer md:hidden block">
-                <img src="{% static 'menu.svg' %}" alt="Menu" class="w-8" onclick="showMobileMenu(this);">
-            </span>
-        </div>
-        <ul id="menulist" class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in-out duration-600">
-            <li id="menuitem" class="mx-4 my-6 md:my-0">
-                <a class="text-xl hover:text-cyan-500 duration-500" href="#">
-                    Link 1
-                </a>
-            </li>
-            <li id="menuitem" class="mx-4 my-6 md:my-0">
-                <a class="text-xl hover:text-cyan-500 duration-500" href="#">
-                    Link 2
-                </a>
-            </li>
-            <li id="menuitem" class="mx-4 my-6 md:my-0">
-                <a class="text-xl hover:text-cyan-500 duration-500" href="#">
-                    Link 3
-                </a>
-            </li>
-        </ul>
-    </nav>
+
+    {% block outsidecontents %}
+    {% endblock %}
 
     <div class="content bg-blue-100 min-h-screen px-3 py-5" style="max-width: 100vw;">
         {% block htmlcontents %}
         {% endblock %}
     </div>
 
-    <script>
-        function showMobileMenu(e) {
-            let list = document.querySelector('#menulist')
-            e.name == 'menu' 
-            ? (e.name = "close", list.classList.add('top-[70px]'), list.classList.add('opacity-100'), list.classList.add('z-[2]')) 
-            : (e.name = 'menu', list.classList.remove('top-[70px]'), list.classList.add('opacity-100'), list.classList.remove('z-[2]'))
-
-        }
-
-        document.addEventListener("DOMContentLoaded", function(event) {
-            document.querySelectorAll('img').forEach(function(img){
-                img.onerror = function(){this.style.display='none';};
-            })
-        });
-    </script>
     {% block scripts %}
     {% endblock %}
 
