@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .sitehelper import build_params
+from .base import build_params
 
 
 def main(request):

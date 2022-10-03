@@ -11,22 +11,51 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from django.core.management.utils import get_random_secret_key  
+import os
+import socket
+from pathlib import Path
+import json
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+data_path = BASE_DIR / "settings.json"
+hostname = socket.gethostname()
+
+def handle_production():
+    "Handle execution to make application production ready"
+    os.chdir('/var/www/html/personal_website2/personal_website2-master')
+
+with open(data_path, "r", encoding="utf") as f:
+    data = json.load(f)
+
+if hostname in data["production_hostnames"] or hostname not in data["development_hostnames"]:
+    print("application starting with PRODUCTION settings")
+    dsettings = data["production_settings"]
+    handle_production()
+else:
+    print("application starting with DEVELOPMENT settings")
+    dsettings = data["development_settings"]
+
+
+
+sk = get_random_secret_key()
+
+try:
+    data["secret_key"] = sk
+    with open(data_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4)
+except PermissionError:
+    print("SECRET_KEY = " + sk)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=w0&n9o@)3+ia)j1+u4dk@_)_n!80ag0s$8gt*2uy01!ezgy%_'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+SECRET_KEY = sk
+DEBUG = dsettings["debug"]
+ALLOWED_HOSTS = dsettings["allowed hosts"]
 
 # Application definition
 
