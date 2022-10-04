@@ -1,5 +1,5 @@
 """
-WSGI config for personal_website2 project.
+WSGI config for PROJECT_NAME project.
 
 It exposes the WSGI callable as a module-level variable named application.
 
