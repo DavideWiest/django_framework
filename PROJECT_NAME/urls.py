@@ -32,5 +32,6 @@ def robots_txt(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('_api.urls')),
-    path('', include('_ui.urls'))
+    path('', include('_ui.urls')),
+    path("robots.txt", robots_txt)
 ]
