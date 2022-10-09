@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ c.termsTitle }}{% endblock %}
+{% block header %}{{ c.termsTitle }}{% endblock %}
+
+{% block htmlcontents %}
+
+
+<div id="longdoc" class="mt-24 flex justify-center roboto">
+    <div id="longdoc-wrapper" style="max-width: 1000px; padding: 0 2rem;">
+        <div id="navbar">
+            <a href="/" id="navbar-link" class="m-4 ml-0 p-3 text-b700 border rounded-xl border-black bg-secondary text-black hover:cursor-pointer">
+                Zur Hauptseite
+            </a>
+        </div>
+        <h1 id="section-header" class="text-3xl text-b600 intertight mt-4">
+            Allgemeine Geschäftsbedingungen
+        </h1>
+        
+        <div class="credentials m-4">
+            <ul class="flex justify-center flex-col items-center">
+                <li id="credential-items" class="code">
+                    {{ c.credentials.name }}
+                </li>
+                <li id="credential-items" class="code">
+                    {{ c.credentials.email }}
+                </li>
+                <li id="credential-item" class="code">
+                    {{ c.credentials.phone }}
+                </li>
+            </ul>
+        </div>
+
+        <h3>Allgemein</h3>
+
+        <h4>Unter-Überschrift</h4>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus placeat odio architecto labore quas a sunt, molestias quidem reiciendis doloribus rem tenetur ratione, inventore quia incidunt recusandae eius quam officia laboriosam fugiat adipisci provident, officiis itaque. Minima ratione nobis officiis beatae suscipit quod? Deserunt dolor nemo distinctio ullam adipisci ipsum fugiat sit voluptatum blanditiis, cupiditate consectetur voluptate optio laudantium maxime repellendus perferendis pariatur odit laborum! Quas corporis error obcaecati natus amet esse a at maiores nihil suscipit placeat dolor reprehenderit est, consectetur possimus dignissimos similique nam accusantium assumenda, porro sunt eaque eius. Nulla dolor dolores non quaerat corporis facilis, voluptatem at et explicabo iusto architecto modi iure natus similique ut incidunt excepturi officiis culpa voluptate alias vitae iste, placeat itaque doloribus! Porro dolorem consequatur odit ut possimus, praesentium, tempore omnis cumque labore quae corporis harum! Obcaecati inventore ad dignissimos sapiente nam? Maxime rerum non doloremque labore ipsam voluptatem. Id ex beatae omnis dolorum debitis sunt, similique labore? Distinctio, adipisci officia iure ea ipsa laboriosam repellat eveniet, nam ipsam corrupti sit perspiciatis in. Quos culpa aliquid id explicabo praesentium aspernatur, iusto sapiente alias, odio, corrupti reiciendis. Doloribus accusantium non voluptatibus nemo deserunt, incidunt optio eveniet nulla, commodi architecto assumenda. Excepturi, iusto?
+        </p>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+{% block scripts %}
+
+
+
+{% endblock %}

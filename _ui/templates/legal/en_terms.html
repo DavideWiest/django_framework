@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ c.termsTitle }}{% endblock %}
+{% block header %}{{ c.termsTitle }}{% endblock %}
+
+{% block htmlcontents %}
+
+
+<div id="longdoc" class="mt-24 flex justify-center roboto">
+    <div id="longdoc-wrapper" style="max-width: 1000px; padding: 0 2rem;">
+        <div id="navbar">
+            <a href="/" id="navbar-link" class="m-4 ml-0 p-3 text-b700 border rounded-xl border-black bg-secondary text-black hover:cursor-pointer">
+                Zur Hauptseite
+            </a>
+        </div>
+        <h1 id="section-header" class="text-3xl text-b600 intertight mt-4">
+            Terms and Conditions
+        </h1>
+        
+        <div class="credentials m-4">
+            <ul class="flex justify-center flex-col items-center">
+                <li id="credential-items" class="code">
+                    {{ c.credentials.name }}
+                </li>
+                <li id="credential-items" class="code">
+                    {{ c.credentials.email }}
+                </li>
+                <li id="credential-item" class="code">
+                    {{ c.credentials.phone }}
+                </li>
+            </ul>
+        </div>
+        <h3>General</h3>
+
+        <h4>Sub-Header</h4>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ratione suscipit doloremque tempore omnis dignissimos, saepe quisquam dolorem eaque officiis. Similique dolore expedita minima, saepe deleniti ipsa culpa veniam eos repudiandae, incidunt nam numquam vel, quasi temporibus magnam eveniet deserunt reiciendis perferendis dicta voluptas nostrum. Adipisci maiores voluptate, repudiandae architecto atque facere dolorum id culpa ullam provident sed porro deserunt nobis optio illo, accusamus explicabo possimus esse, nihil error. Et labore nisi quia quibusdam nihil a quam nobis non facilis maxime aliquid recusandae dolore aliquam molestiae, consectetur ratione vero at odit perspiciatis commodi placeat, reiciendis sed maiores eius? Eaque laborum vitae provident facere ipsam, molestias quod quos aliquid reprehenderit! In velit earum atque accusamus laboriosam consectetur saepe laudantium dolor. Eius ex molestias mollitia voluptas odit reprehenderit atque, quae minima similique sed totam sint nisi accusantium cumque dignissimos, doloremque, nemo temporibus ipsum error minus incidunt rerum. Obcaecati temporibus aliquam sapiente dignissimos quidem, rerum eum, repudiandae vero cum illum quas? Dolore, harum? Quasi amet eos ipsa. Porro expedita ab commodi dicta consectetur quod nemo, harum provident eius reiciendis ut? Corrupti a dolores ea commodi culpa magni aspernatur ab voluptatibus cupiditate rem esse voluptate unde ipsum eos quaerat veritatis, natus facilis. Eum, qui!
+        </p>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+
+
+{% endblock %}
