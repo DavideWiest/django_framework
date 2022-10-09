@@ -29,9 +29,20 @@ def robots_txt(request):
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
 
+@require_GET
+def sitemap_txt(request):
+    lines = [
+        "https://davidewiest.com/"
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
+
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('_api.urls')),
     path('', include('_ui.urls')),
-    path("robots.txt", robots_txt)
+    path("robots.txt", robots_txt),
+    path("sitemap.txt", sitemap_txt)
 ]
