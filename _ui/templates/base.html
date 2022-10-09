@@ -5,10 +5,21 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <meta property="og:title" content="Title" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://example.com"/>
+        <meta property="og:image" content="../static/images/logo/logosvg.svg" />
+        <meta property="og:description" content="Description" />
+        <meta name="theme-color" content="#000000">
+
+        <meta name="twitter:card" content= "summary_large_image">
+
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'css/typography.css' %}">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <!-- <link rel="icon" type="image/png" href="{% static 'assets/Branding_Assets 14 Logo White PNG.png' %}"/> -->
+        <link rel="icon" type="image/png" href="{% static 'assets/logo.png' %}"/>
 
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
