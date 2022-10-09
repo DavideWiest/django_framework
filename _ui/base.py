@@ -60,11 +60,11 @@ def choose_lang(request):
 
     
 def getip(request):
-    if request.headers.getlist("X-Forwarded-For"):
-        ip = request.headers.getlist("X-Forwarded-For")[0]
+    user_ip_address = request.META.get('HTTP_X_FORWARDED_FOR')
+    if user_ip_address:
+        ip = user_ip_address.split(',')[0]
     else:
-        ip = request.remote_addr
-    
+        ip = request.META.get('REMOTE_ADDR')
     return ip
 
 def get_preference_descriptions(subscribed_to, l):
