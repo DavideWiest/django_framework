@@ -31,7 +31,7 @@ def build_params(storage_ptrs, params, language):
             c_files[filename] = {}
 
     bparams = {
-        "std_title_clause": std_title_clause,
+        "title": params.get("title", "") + std_title_clause,
         "base_url": "http://127.0.0.1:8000/",
         "c": c_files,
         "l": language
@@ -40,20 +40,31 @@ def build_params(storage_ptrs, params, language):
     return {**bparams, **params}
 
 def choose_lang(request):
-    if request.GET.get("lang") in allowed_languages:
-        return request.GET.get("lang")
-    
-    if request.session["lang"] in allowed_languages:
-        return request.session["lang"]
-    
     language = translation.get_language_from_request(request)
 
+    # first priority
+    if request.method == "GET":
+        if request.GET.get("language") in allowed_languages:
+            # change request.session["language"]
+            # change db user settings.language
+            return request.GET.get("language")
+    
+    # second priority
+    if "user_id" in request.session:
+        # change request.session["language"]
+        pass
+    
+    # third priority
+    if request.session["language"] in allowed_languages:
+        return request.session["language"]
+    
+    # allow only de or en
     if language in ("ch", "au"):
         language = "de"
     if language != "de":
         language = "en"
 
-    language = "en"
+    # language = "en"
 
     return language
 
@@ -96,12 +107,28 @@ def populate_form_choices(form_obj: forms.Form, l):
         
     return form_obj
 
-def translate_form(form_obj: forms.Form, l):
-    form_obj = populate_form_labels(form_obj, l)
-    form_obj = populate_form_choices(form_obj, l)
+def populate_form_help_text(form_obj: forms.Form, l):
+    form_name = form_obj.__class__.__name__
+
+    form_fields = openfile(l + "/forms.json", form_name).get("help_text")
+    if form_fields != None:
+        for field in form_fields:
+            form_obj.fields[field].help_text = list(form_fields[field])
+
     return form_obj
 
+def populate_form(form_obj: forms.Form, l):
+    form_obj = populate_form_labels(form_obj, l)
+    form_obj = populate_form_choices(form_obj, l)
+    form_obj = populate_form_help_text(form_obj, l)
+    return form_obj
 
+def handle_userdata(request):
+
+    if "user_id" in request.session:
+        pass
+
+    return request.session
 
 
 

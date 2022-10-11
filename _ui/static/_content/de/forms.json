@@ -1,0 +1,21 @@
+{
+    "customizationForm": {
+        "labels": {
+            "name": "Your Name",
+            "email": "Your E-Mail",
+            "group": "Which one are you?"
+        },
+        "help_text": {
+            "name": "Please enter your name (Maximamum 100 characters)",
+            "email": "Please enter a valid E-Mail-Adress (Maximamum 100 characters)"
+        },
+        "choices": {
+            "group": {
+                "Student": "student",
+                "Interested in ...": "interestedin",
+                "Active in ...": "activein",
+                "Working in ...":"workingin"
+            }
+        }
+    }
+}

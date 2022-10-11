@@ -6,7 +6,20 @@
 {% block htmlcontents %}
 
 
+<form action="#" method="post">
+    {% csrf_token  %}
+    {{ signupForm.as_p }}
+    <button type="submit" name="submit">{{ c.main.formButtonText }}</button>
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
 
+                {{ field.label }}: {{ error|escape }}
+
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+</form>
 
 
 
