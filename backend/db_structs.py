@@ -53,6 +53,9 @@ class BaseCol():
 
     def delete(self, query):
         self.col.delete_one(query)
+
+    def multidelete(self, query):
+        self.col.delete_many(query)
     
     def get_all_field_ids(self, filter={}):
         docs = self.col.find(filter, {"_id": 1})
