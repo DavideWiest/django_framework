@@ -5,8 +5,9 @@ import json
 
 
 class ViewHelper():
-    def __init__(self, base_path):
+    def __init__(self, base_path, omni_content_files=[]):
         self.base_path = base_path
+        self.omni_content_files = omni_content_files + ["b_data"]
         self.std_title_clause = " - FINsights"
         self.lang_independant_files = ("credentials", "data", "b_credentials", "b_data")
         self.allowed_languages = ("en", "de")
@@ -16,7 +17,7 @@ class ViewHelper():
         if filename.split(".")[0] in self.base_content_files:
             filepath = f"_base_static/_content/{filename}"
         else:
-            f"{self.base_path}/static/_content/{filename}"
+            filepath = f"{self.base_path}/static/_content/{filename}"
         with open(filepath, "r", encoding="utf-8") as f:
             file = json.load(f)
             if subfield:
@@ -27,7 +28,7 @@ class ViewHelper():
     def build_params(self, storage_ptrs, params, language):
         
         c_files = {}
-        for storage_ptr in storage_ptrs + ["base", "b_data"]:
+        for storage_ptr in storage_ptrs + self.omni_content_files:
             if storage_ptr != "":
                 if "/" in storage_ptr:
                     filename, subfield = storage_ptr.split("/")
@@ -111,13 +112,13 @@ class ViewHelper():
         
 
 class FormHelper():
-    def __init__(self):
-        pass
+    def __init__(self, viewhelper):
+        self.vh = viewhelper
 
     def populate_form_labels(self, form_obj: forms.Form, l):
         form_name = form_obj.__class__.__name__
         
-        form_fields = self.openfile(l + "/forms.json", form_name).get("labels")
+        form_fields = self.vh.openfile(l + "/forms.json", form_name).get("labels")
         if form_fields != None:
             for field in form_fields:
                 form_obj.fields[field].label = form_fields[field]
@@ -127,7 +128,7 @@ class FormHelper():
     def populate_form_choices(self, form_obj: forms.Form, l):
         form_name = form_obj.__class__.__name__
 
-        form_fields = self.openfile(l + "/forms.json", form_name).get("choices")
+        form_fields = self.vh.openfile(l + "/forms.json", form_name).get("choices")
         if form_fields != None:
             for field in form_fields:
                 form_obj.fields[field].choices = list(form_fields[field])
@@ -137,7 +138,7 @@ class FormHelper():
     def populate_form_help_text(self, form_obj: forms.Form, l):
         form_name = form_obj.__class__.__name__
 
-        form_fields = self.openfile(l + "/forms.json", form_name).get("help_text")
+        form_fields = self.vh.openfile(l + "/forms.json", form_name).get("help_text")
         if form_fields != None:
             for field in form_fields:
                 form_obj.fields[field].help_text = list(form_fields[field])

@@ -6,8 +6,8 @@ import traceback
 from modules.viewhelper import ViewHelper, FormHelper
 from .forms import signupForm
 
-vh = ViewHelper("_site")
-fh = FormHelper()
+vh = ViewHelper("_site", ["base"])
+fh = FormHelper(vh)
 
 def main(request):
     l = vh.choose_lang(request)
