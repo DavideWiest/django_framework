@@ -39,15 +39,17 @@ else:
     dsettings = data["development_settings"]
 
 
+if data["prevent_new_secret_key"] != True:
+    sk = get_random_secret_key()
 
-sk = get_random_secret_key()
-
-try:
-    data["secret_key"] = sk
-    with open(data_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4)
-except PermissionError:
-    print("SECRET_KEY = " + sk)
+    try:
+        data["secret_key"] = sk
+        with open(data_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)
+    except PermissionError:
+        print("SECRET_KEY = " + sk)
+else:
+    sk = data["secret_key"]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -68,7 +70,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     '_api',
-    '_ui'
+    '_site',
+    "modules"
 ]
 
 MIDDLEWARE = [
@@ -79,7 +82,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    '_ui.middleware.registrationMiddleware'
+
+    'modules.middleware.registrationMiddleware'
 ]
 
 ROOT_URLCONF = 'PROJECT_NAME.urls'

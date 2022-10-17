@@ -16,5 +16,6 @@
             "davidewiest"
         ]
     },
-    "secret_key": ")(v0401p15m#+w-^vm-2olh6bo(b%yfy+9&#_75@75ay%+jce@"
+    "secret_key": ")(v0401p15m#+w-^vm-2olh6bo(b%yfy+9&#_75@75ay%+jce@",
+    "prevent_new_secret_key": true
 }

@@ -1,4 +1,4 @@
-from .base import choose_lang
+from .._site.base import choose_lang
 
 class registrationMiddleware(object):
 
