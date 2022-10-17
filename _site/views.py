@@ -3,21 +3,22 @@ from django.http import HttpResponse
 from django.contrib import messages
 import traceback
 
-from .base import build_params, allowed_languages, choose_lang, populate_form, handle_requestdata
+from modules.viewhelper import ViewHelper, FormHelper
 from .forms import signupForm
 
+vh = ViewHelper("_site")
+fh = FormHelper()
+
 def main(request):
-    l = choose_lang(request)
-    request.session = handle_requestdata(request, l)
+    l = vh.choose_lang(request)
+    request.session = vh.handle_requestdata(request, l)
     
     params = {"title": "PROJECT_NAME"}
 
     if request.method == "POST":
-        form = populate_form(signupForm(request.POST), l)
+        form = fh.populate_form(signupForm(request.POST), l)
         if form.is_valid():
             clfm = form.cleaned_data
-
-
 
 
             try:
@@ -30,7 +31,7 @@ def main(request):
                 messages.add_message(request, messages.ERROR, f"Account could not be created. Something went wrong.")
                 form.initial=clfm
     else:
-        form = populate_form(signupForm(), l)
+        form = fh.populate_form(signupForm(), l)
 
     params["signupForm"] = form
-    return render(request, "main.html", build_params(["main"], params, l))
+    return render(request, "main.html", vh.build_params(["main"], params, l))

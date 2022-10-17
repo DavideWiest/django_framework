@@ -26,6 +26,8 @@ hostname = socket.gethostname()
 def handle_production():
     "Handle execution to make application production ready"
     os.chdir('/var/www/html/PROJECT_NAME/PROJECT_NAME-master')
+    WSGI_APPLICATION = 'PROJECT_NAME.wsgi.application'
+
 
 with open(data_path, "r", encoding="utf") as f:
     data = json.load(f)
@@ -55,6 +57,7 @@ else:
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: don't run with debug turned on in production!
+
 SECRET_KEY = sk
 DEBUG = dsettings["debug"]
 ALLOWED_HOSTS = dsettings["allowed hosts"]
@@ -71,7 +74,8 @@ INSTALLED_APPS = [
 
     '_api',
     '_site',
-    "modules"
+    'legal',
+    'modules'
 ]
 
 MIDDLEWARE = [
@@ -91,7 +95,7 @@ ROOT_URLCONF = 'PROJECT_NAME.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(os.path.join(BASE_DIR, '_base_static'), 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,8 +107,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'PROJECT_NAME.wsgi.application'
 
 
 # Database

@@ -10,16 +10,16 @@
         <meta property="og:title" content="Title" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://example.com"/>
-        <meta property="og:image" content="../static/images/logo/logosvg.svg" />
+        <meta property="og:image" content="_base_static/assets/logo.png" />
         <meta property="og:description" content="Description" />
         <meta name="theme-color" content="#000000">
 
         <meta name="twitter:card" content= "summary_large_image">
 
         <title>{% block title %}{% endblock %}</title>
-        <link rel="stylesheet" href="{% static 'css/typography.css' %}">
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <link rel="icon" type="image/png" href="{% static 'assets/logo.png' %}"/>
+        <link rel="stylesheet" href="_base_static/css/typography.css">
+        <link rel="stylesheet" href="_base_static/css/base.css">
+        <link rel="icon" type="image/png" href="_base_static/assets/logo.png"/>
 
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
@@ -36,20 +36,9 @@
             }
         </script>
         
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 <body>
-    <style>
-        * {
-            font-family: 'Nunito Sans', 'Roboto', 'Helvetica', sans-serif;
-        }
-        .code {
-            font-family: 'Fira Code', monospace;
-        }
-        a:hover {
-            cursor: pointer;
-        }
-    </style>
 
 
     {% block outsidecontents %}
@@ -70,6 +59,8 @@
             localStorage.setItem('scrollpos', window.scrollY);
         };
     </script>
+
+    <script src="{% static 'js/base.js' %}"></script>
 
     {% block scripts %}
     {% endblock %}

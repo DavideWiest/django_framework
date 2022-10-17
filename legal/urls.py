@@ -1,24 +1,26 @@
 from django.urls import path
 from django.shortcuts import render
-from .base import build_params, choose_lang
+from modules.viewhelper import ViewHelper
+
+vh = ViewHelper("legal")
 
 def terms(request):
     
-    l = choose_lang(request)
+    l = vh.choose_lang(request)
     if lang not in ("de", "ch", "au"):
         lang = "en"
     else:
         lang = "de"
-    return render(request, f"legal/{l}_terms.html", build_params("", ["credentials", "legal"], {}, l))
+    return render(request, f"legal/{l}_terms.html", vh.build_params(["b_credentials"], {}, l))
 
 def impressum(request):
     
-    l = choose_lang(request)
+    l = vh.choose_lang(request)
     if lang not in ("de", "ch", "au"):
         lang = "en"
     else:
         lang = "de"
-    return render(request, f"legal/{l}_impressum.html", build_params("", ["credentials", "legal"], {}, l))
+    return render(request, f"legal/{l}_impressum.html", vh.build_params(["b_credentials"], {}, l))
 
 
 
