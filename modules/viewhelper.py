@@ -27,7 +27,7 @@ class ViewHelper():
     def build_params(self, storage_ptrs, params, language):
         
         c_files = {}
-        for storage_ptr in storage_ptrs + ["base"]:
+        for storage_ptr in storage_ptrs + ["base", "b_data"]:
             if storage_ptr != "":
                 if "/" in storage_ptr:
                     filename, subfield = storage_ptr.split("/")
