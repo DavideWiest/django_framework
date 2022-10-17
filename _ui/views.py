@@ -3,16 +3,13 @@ from django.http import HttpResponse
 from django.contrib import messages
 import traceback
 
-from .base import build_params, allowed_languages, choose_lang, handle_userdata, populate_form
+from .base import build_params, allowed_languages, choose_lang, populate_form, handle_requestdata
 from .forms import signupForm
 
 def main(request):
     l = choose_lang(request)
-    if request.session.get("language") not in allowed_languages:
-        request.session["language"] = l
+    request.session = handle_requestdata(request, l)
     
-    request.session = handle_userdata(request)
-
     params = {"title": "PROJECT_NAME"}
 
     if request.method == "POST":

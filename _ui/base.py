@@ -123,12 +123,28 @@ def populate_form(form_obj: forms.Form, l):
     form_obj = populate_form_help_text(form_obj, l)
     return form_obj
 
-def handle_userdata(request):
+def choose_lang(request):
+    if request.session.get("language") in allowed_languages:
+        return request.session["language"]
+    
+    
+    language = translation.get_language_from_request(request)
 
-    if "user_id" in request.session:
-        pass
+    if language in ("ch", "au"):
+        language = "de"
+    if language != "de":
+        language = "en"
 
-    return request.session
+    return language
 
+def handle_requestdata(request, l):
+    if request.GET.get("language") in allowed_languages:
+        request.session["language"] = l
+        return request.GET.get("language")
+        
+    if request.session.get("language") not in allowed_languages:
+        request.session["language"] = l
+
+    
 
 
