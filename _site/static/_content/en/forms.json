@@ -7,7 +7,8 @@
         },
         "help_text": {
             "name": "Please enter your name (Maximamum 100 characters)",
-            "email": "Please enter a valid E-Mail-Adress (Maximamum 100 characters)"
+            "email": "Please enter a valid E-Mail-Adress (Maximamum 100 characters)",
+            "group": "Please select one of these options"
         },
         "choices": {
             "group": {

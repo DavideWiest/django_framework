@@ -11,7 +11,7 @@ def terms(request):
         l = "en"
     else:
         l = "de"
-    return render(request, f"legal/{l}_terms.html", vh.build_params(["b_credentials"], {}, l))
+    return render(request, f"{l}_terms.html", vh.build_params(["b_credentials"], {}, l))
 
 def impressum(request):
     
@@ -20,7 +20,7 @@ def impressum(request):
         l = "en"
     else:
         l = "de"
-    return render(request, f"legal/{l}_impressum.html", vh.build_params(["b_credentials"], {}, l))
+    return render(request, f"{l}_impressum.html", vh.build_params(["b_credentials"], {}, l))
 
 
 
