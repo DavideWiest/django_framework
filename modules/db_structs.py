@@ -40,7 +40,7 @@ class BaseCol():
         return docs
         
     def multiread(self, query, return_fields={}):
-        docs = list(self.col.find_many(query, return_fields))
+        docs = list(self.col.find(query, return_fields))
         return docs
     
     def update(self, query, update_fields, outside_set=False):
