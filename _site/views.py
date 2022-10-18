@@ -33,5 +33,6 @@ def main(request):
     else:
         form = fh.populate_form(signupForm(), l)
 
+
     params["signupForm"] = form
     return render(request, "main.html", vh.build_params(["main"], params, l))

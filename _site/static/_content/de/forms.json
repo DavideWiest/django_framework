@@ -11,10 +11,10 @@
         },
         "choices": {
             "group": {
-                "Student": "student",
-                "Interested in ...": "interestedin",
-                "Active in ...": "activein",
-                "Working in ...":"workingin"
+                "student": "Student",
+                "interestedin": "Interested in",
+                "activein": "Active in",
+                "workingin": "Working in"
             }
         }
     }

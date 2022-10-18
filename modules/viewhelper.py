@@ -131,7 +131,7 @@ class FormHelper():
         form_fields = self.vh.openfile(l + "/forms.json", form_name).get("choices")
         if form_fields != None:
             for field in form_fields:
-                form_obj.fields[field].choices = list(form_fields[field])
+                form_obj.fields[field].choices = [(k, v) for k, v in form_fields[field].items()]
             
         return form_obj
 
@@ -141,7 +141,7 @@ class FormHelper():
         form_fields = self.vh.openfile(l + "/forms.json", form_name).get("help_text")
         if form_fields != None:
             for field in form_fields:
-                form_obj.fields[field].help_text = list(form_fields[field])
+                form_obj.fields[field].help_text = form_fields[field]
 
         return form_obj
 
