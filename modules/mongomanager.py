@@ -12,9 +12,7 @@ class MongoManager:
         
         self.connect()
 
-        self.usercol = self.db["users"]
-        self.stockcol = self.db["stocks"]
-        self.stocklistcol = self.db["stocklists"]
+        # self.basecol = self.db["base"]
         
     def connect(self):
         self.client = pymongo.MongoClient(self.con_str)
