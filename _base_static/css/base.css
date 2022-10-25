@@ -58,3 +58,5 @@ a:hover {
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(117, 117, 117); 
   }
+
+  :focus { outline: none; }

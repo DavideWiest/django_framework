@@ -1,0 +1,27 @@
+{% load static %}
+{% load static %}
+<footer id="footer" class="pt-6 bg-graybg">
+    <hr class="my-6 border-gray-300 lg:my-8" />
+
+    <div id="logo-wrapper" class="md:flex md:items-center justify-between mb-2" style="min-width: min(100vw, 1200px);">
+        <div style="margin-left: 4vw">
+            <a href="/">
+                <img src="{% static 'assets/logo.png' %}" alt="finsights" class="w-32">
+            </a>
+        </div>
+        <ul id="footer-info" class="md:flex justify-center flex-wrap mt-6 md:mt-0 mx-4 md:mx-0">
+            {% for desc, link in c.base.footer.links.items %}
+            <li>
+                <a href="/{{ link }}" class="p-1.5 my-2 md:my-1 m-1 freight text-b600 text-lg md:text-xl hover:underline underline-offset-2 text-gray-700 hover:text-black whitespace-nowrap">
+                    {{ desc }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="footer-bottom-info" class="mt-6">
+        <p class="text-center text-gray-600">
+            {{ c.base.footer.bottom_text }}
+        </p>
+    </div>            
+</footer>
