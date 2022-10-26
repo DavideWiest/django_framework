@@ -10,8 +10,7 @@ vh = ViewHelper("_site", ["base"])
 fh = FormHelper(vh)
 
 def main(request):
-    l = vh.choose_lang(request)
-    request.session = vh.handle_requestdata(request, l)
+    request.session, l = vh.handle_requestdata(request)
     
     params = {"title": "PROJECT_NAME"}
 

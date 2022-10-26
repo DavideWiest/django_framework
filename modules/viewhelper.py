@@ -88,8 +88,10 @@ class ViewHelper():
         return ip
 
     def choose_lang(self, request):
-        if request.session.get("language") in self.allowed_languages:
-            return request.session["language"]
+        if request.method == "GET":
+            if request.session.get("language") in self.allowed_languages:
+                request.session["language"] = request.session.get("language")
+                return request.session, request.session["language"]
         
         
         language = translation.get_language_from_request(request)
@@ -99,17 +101,15 @@ class ViewHelper():
         if language != "de":
             language = "en"
 
-        return language
+        return request.session, language
 
     def handle_requestdata(self, request, l):
-        if request.GET.get("language") in self.allowed_languages:
-            request.session["language"] = l
-            return request.GET.get("language")
+        request.session, l = self.choose_lang(request)
             
-        if request.session.get("language") not in self.allowed_languages:
-            request.session["language"] = l
+        if "language" in request.sesison and request.session.get("language") not in self.allowed_languages:
+            del request.session("language")
 
-        
+        return request.session, l
 
 class FormHelper():
     def __init__(self, viewhelper):
@@ -148,6 +148,13 @@ class FormHelper():
     def populate_form(self, form_obj: forms.Form, l):
         form_obj = self.populate_form_labels(form_obj, l)
         form_obj = self.populate_form_choices(form_obj, l)
-        form_obj = self.populate_form_help_text(form_obj, l)
+        # form_obj = self.populate_form_help_text(form_obj, l)
         return form_obj
 
+
+def prebuild_params(request, params):
+    params["navbar_show_type"] = "old" if "user_id" in request.session else "new"
+
+    # more, like getting name or navigation options
+
+    return params

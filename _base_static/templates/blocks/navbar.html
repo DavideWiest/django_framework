@@ -1,5 +1,4 @@
 {% load static %}
-{% load static %}
 <nav id="nav" class="sticky top-0">
     <div id="navbar-contents" class="border-b-2 border-black flex" style="height: 62px;">
         <div id="navbar-logo" class="w-full md:w-1/5 lg:w-1/6 2xl:w-1/12 bg-primary md:border-r-2 border-black flex justify-between md:justify-center items-center">
@@ -23,17 +22,17 @@
                 </button>
             </div>
         </div>
-        <div id="navbar-links" class="bg-white backdrop-blur-md absolute md:relative md:top-0 w-full md:w-auto md:block hidden md:grow">
+        <div id="navbar-links" class="bg-white backdrop-blur-md absolute md:relative md:top-0 w-full md:w-auto md:block hidden md:grow mr-2">
             <div class="flex flex-col md:flex-row justify-end h-full items-center">
                 {% if navbar_show_type == "old" %}
-                    <div id="welcome-msg" class="flex flex-col justify-center mx-4 text-b500 text-lg">
-                        {{ c.base.nav.welcome_msg.0 }} {{ user_name }} {{ c.base.nav.welcome_msg.1 }}
+                    <div id="welcome-msg" class="flex flex-col justify-center mx-4 text-b500 md:text-base lg:text-lg">
+                        {{ c.base.nav.welcome_msg.0 }} {{ user_name }}{{ c.base.nav.welcome_msg.1 }}
                     </div>
-                    <div class="flex justify-center items-center">
+                    <div class="flex justify-center items-center flex-wrap">
                         <a href="/account" class="rounded-xl p-2 px-4 text-b700 text-white text-base shadow-lg bg-black border-2 border-black transition duration-100 ease-in-out hover:-translate-y-1">
                             {{ c.base.nav.acc }}
                         </a>
-                        {% if user_stocklists != None %}
+                        
                         <div class="bg-transparent">
                             <div class="flex flex-col justify-center mx-4 h-full">
                                 <button id="show-stocklists" onclick="showStocklistOptions();" class="rounded-xl p-2 px-4 text-b700 text-black text-base shadow-lg bg-white border-2 border-black transition duration-100 ease-in-out hover:-translate-y-1">
@@ -42,9 +41,10 @@
                                 </button>
                             </div>
                             <div id="stocklist-options" class="absolute right-0 mr-4 p-2 z-20 py-2 mt-4 overflow-hidden rounded-md shadow-xl hidden bg-white/75 backdrop-blur-md">
-                                {% for stocklist_name, stocklist_id in user_stocklists %}
-                                <a href="stocklist/view/{{ stocklist_id }}" id="stocklist-option" class="inline-block p-3 rounded-md hover:underline underline-offset-2 hover:bg-gray-100">
+                                {% for stocklist_id, stocklist_name in user_stocklists.items %}
+                                <a href="stocklist/view/{{ stocklist_id }}" id="stocklist-option" class="block p-1.5 my-2 md:my-1 m-1 freight text-b600 text-xl md:text-2xl hover:underline underline-offset-2 text-gray-700 hover:text-black whitespace-nowrap">
                                     {{ stocklist_name }}
+                                    <img src="{% static 'icons/arrow-long.png' %}" alt="Go to" class="w-5 h-4 inline-block translate-x-px md:-translate-y-0.5">
                                 </a>
                                 {% empty %}
                                 <div id="stocklist-options-none" class="inline-block w-xl py-4 px-6 text-xl freight text-b600">
@@ -53,19 +53,38 @@
                                 {% endfor %}
                             </div>
                         </div>
-                        {% endif %}
                     </div>
                 {% elif navbar_show_type == "new" %}
                     <div id="welcome-msg" class="flex flex-col justify-center mx-4 text-b500 text-lg">
                         {{ c.base.nav.welcome_msg_new }}
                     </div>
-                    <button id="primary-button" class="rounded-xl p-2 px-4 text-b700 text-base text-white shadow-lg bg-black border-2 border-black transition duration-100 ease-in-out hover:-translate-y-1 mr-3">
+                    <a id="primary-button" href="/#join-newsletter-bottom" class="rounded-xl p-2 px-4 text-b700 text-base text-white shadow-lg bg-black border-2 border-black transition duration-100 ease-in-out hover:-translate-y-1 mr-3">
                         {{ c.base.nav.cta }}
-                    </button>
+                    </a>
+                    <a id="primary-button" href="/#join-newsletter-bottom" class="rounded-xl p-2 px-4 text-b700 text-black text-base shadow-lg bg-white border-2 border-black transition duration-100 ease-in-out hover:-translate-y-1">
+                        {{ c.base.nav.login }}
+                    </a>
+                {% elif navbar_show_type == "customize" %}
+                    <div id="welcome-msg" class="flex flex-col justify-center mx-4 text-b500 text-lg">
+                        {{ c.base.nav.customize_msg }}
+                    </div>
                 {% endif %}
-                <div id="language-options">
-                    
-                </div>
+                    <div id="language-options" class="inline-block">
+                        <button id="show-languages" onclick="revealLangOptions();" class="rounded-xl p-2 px-2 text-b700 text-black text-base shadow-lg bg-white border-2 border-black transition duration-100 ease-in-out hover:-translate-y-1">
+                            <img src="/static/icons/{{ l }}.png" alt="Language" class="w-6 h-6">
+                        </button>
+                        <div id="language-options-inner" class="absolute right-0 mr-4 p-4 z-50 py-4 mt-4 overflow-hidden rounded-md shadow-xl hidden bg-white/75 backdrop-blur-md" style="min-width: 2rem; min-height: 2rem;">
+                            <p id="language-options-info" class="text-xl mb-2">
+                                {{ c.base.nav.switch_lang_info }}
+                            </p>
+                            {% for lang in other_langs %}
+                                <a id="show-languages" href="?lang={{ lang }}" class="inline-block h-fit w-fit rounded-xl p-2 px-2 text-b700 text-black text-base shadow-lg bg-white border-2 border-black transition duration-100 ease-in-out hover:-translate-y-1">
+                                    <!-- <img src="/static/icons/{{ l }}.png" alt="Language" class="w-6 h-6"> -->
+                                    <img src="/static/icons/{{ lang }}.png" alt="Language" class="w-6 h-6">
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
