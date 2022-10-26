@@ -8,17 +8,24 @@
 
 <form action="#" method="post">
     {% csrf_token  %}
-    {{ signupForm.as_p }}
+
+    <div id="res_{{ signupForm.name.auto_id }}_wrapper">
+        <label id="res_{{ signupForm.name.auto_id }}_label" for="{{ signupForm.name.auto_id }}">{{ signupForm.name.label }}</label>
+        {{ signupForm.name }}
+        {{ signupForm.name.errors }}
+    </div>
+    <div id="res_{{ singupForm.email.auto_id }}_wrapper">
+        <label id="res_{{ singupForm.email.auto_id }}_label" for="{{ singupForm.email.auto_id }}">{{ singupForm.email.label }}</label>
+        {{ singupForm.email }}
+        {{ singupForm.email.errors }}
+    </div>
+    <div id="res_{{ signupForm.group.auto_id }}_wrapper">
+        <label id="res_{{ signupForm.group.auto_id }}_label" for="{{ signupForm.group.auto_id }}">{{ signupForm.group.label }}</label>
+        {{ signupForm.group }}
+        {{ signupForm.group.errors }}
+    </div>
+    
     <button type="submit" name="submit">{{ c.main.formButtonText }}</button>
-    {% if form.errors %}
-        {% for field in form %}
-            {% for error in field.errors %}
-
-                {{ field.label }}: {{ error|escape }}
-
-            {% endfor %}
-        {% endfor %}
-    {% endif %}
 </form>
 
 
