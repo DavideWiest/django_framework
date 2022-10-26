@@ -107,7 +107,7 @@ class ViewHelper():
         request.session, l = self.choose_lang(request)
             
         if "language" in request.sesison and request.session.get("language") not in self.allowed_languages:
-            del request.session("language")
+            del request.session["language"]
 
         return request.session, l
 
