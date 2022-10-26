@@ -18,9 +18,9 @@
             </div>
         {% endif %}
     </div>
-    <div id="{{ singupForm.email.auto_id }}_wrapper">
-        <label id="{{ singupForm.email.auto_id }}_label" for="{{ singupForm.email.auto_id }}">{{ singupForm.email.label }}</label>
-        {{ singupForm.email }}
+    <div id="{{ signupForm.email.auto_id }}_wrapper">
+        <label id="{{ signupForm.email.auto_id }}_label" for="{{ signupForm.email.auto_id }}">{{ signupForm.email.label }}</label>
+        {{ signupForm.email }}
         {% if signupForm.email.errors %}
             <div id="{{ signupForm.email.auto_id }}_errors" class="text-sm text-red-600">
                 {{ signupForm.email.errors }}
