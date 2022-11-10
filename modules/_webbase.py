@@ -2,13 +2,14 @@
 # from .db_structs import UserCol, StockCol, StocklistCol
 from .mongomanager import MongoManager
 
-from modules.ssecrets import PassManager, SecretOperator
+from modules.ssecrets import PassManager, SecretOperator, DeploymentHelper
 # from modules.mailoperator import MailOperator
 # from modules.mailchimp import MailChimp
 
 
 class Webbase():
     def __init__(self):
+        self.dh = DeploymentHelper()
         self.so = SecretOperator()
         self.pm = PassManager()
         self.secrets = self.so.get_json_secrets()
