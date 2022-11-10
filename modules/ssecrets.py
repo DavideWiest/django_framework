@@ -77,7 +77,7 @@ class DeploymentHelper():
         with open(data["data_json_relpath"], "w", encoding="utf-8") as f:
             json.dump(jsoncontents, f, indent=4)
 
-        css_path = "_site/static/css/"
+        css_path = "_base_static/css/"
         self.compress_file(css_path, "base.css")
         self.compress_file(css_path, "typography.css")
 

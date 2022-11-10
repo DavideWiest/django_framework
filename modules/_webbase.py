@@ -10,6 +10,7 @@ from modules.ssecrets import PassManager, SecretOperator, DeploymentHelper
 class Webbase():
     def __init__(self):
         self.dh = DeploymentHelper()
+        self.run_settings, self.device_settings = self.dh.get_json_settings()
         self.so = SecretOperator()
         self.pm = PassManager()
         self.secrets = self.so.get_json_secrets()
