@@ -103,10 +103,10 @@ class ViewHelper():
 
         return request.session, language
 
-    def handle_requestdata(self, request, l):
+    def handle_requestdata(self, request):
         request.session, l = self.choose_lang(request)
             
-        if "language" in request.sesison and request.session.get("language") not in self.allowed_languages:
+        if "language" in request.session and request.session.get("language") not in self.allowed_languages:
             del request.session["language"]
 
         return request.session, l
