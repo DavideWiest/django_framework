@@ -8,7 +8,7 @@ class ViewHelper():
     def __init__(self, base_path, omni_content_files=[]):
         self.base_path = base_path
         self.omni_content_files = omni_content_files + ["b_data"]
-        self.std_title_clause = " - FINsights"
+        self.std_title_clause = " - PROJECT_NAME"
         self.lang_independant_files = ("credentials", "data", "b_credentials", "b_data")
         self.allowed_languages = ("en", "de")
         self.base_content_files = ("b_credentials", "b_data")
