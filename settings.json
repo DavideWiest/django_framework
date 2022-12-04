@@ -16,7 +16,7 @@
             "raspi",
             "PROJECT_NAME"
         ],
-        "domainName": "PROJECT_NAME URL"
+        "domainName": "PROJECT_NAME.com"
     },
     "device_specific_settings": {
         "DESKTOP-9DUQODF": {
