@@ -14,4 +14,5 @@ Deployment ToDo:
 - test run app (python3 manage.py runserver)
 - create config file (sudo nano /etc/apache2/sites-available/PROJECT_NAME.conf)
 - collectstatic (python3 manage.py collectstatic) (STATIC_ROOT must be defined in settings.py as absolute path)
-- 
+- restart apache2 (systemctl restart apache2)
+- check status, debug if needed (systemctl status apache2)
