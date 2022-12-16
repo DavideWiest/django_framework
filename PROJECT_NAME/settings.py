@@ -62,6 +62,8 @@ SECRET_KEY = sk
 DEBUG = dsettings["debug"]
 ALLOWED_HOSTS = dsettings["allowed hosts"]
 
+
+STATIC_ROOT="/var/www/html/PROJECT_NAME/static"
 # Application definition
 
 INSTALLED_APPS = [
