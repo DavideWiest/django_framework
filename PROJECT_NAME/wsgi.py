@@ -11,6 +11,10 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
+# for production
+sys.path.append("/var/www/html/PROJECT_NAME")
+sys.path.append("/var/www/html/PROJECT_NAME/PROJECT_NAME")
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'PROJECT_NAME.settings')
 
 application = get_wsgi_application()
