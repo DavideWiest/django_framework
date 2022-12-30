@@ -62,6 +62,8 @@ SECRET_KEY = sk
 DEBUG = dsettings["debug"]
 ALLOWED_HOSTS = dsettings["allowed hosts"]
 
+
+STATIC_ROOT="/var/www/html/PROJECT_NAME/static"
 # Application definition
 
 INSTALLED_APPS = [
@@ -157,6 +159,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "_base_static/" # 'static/'
+STATIC_ROOT = "/var/www/html/PROJECT_NAME/static"
 
 # STATICFILES_DIRS = [
 #     BASE_DIR / "_base_static"
